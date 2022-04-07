@@ -23,5 +23,13 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-
+    .el-container{
+        height: 100%;
+    }
+    .el-header{
+        padding: 0;
+    }
+    .el-aside{
+        height: 100%;
+    }
 </style>

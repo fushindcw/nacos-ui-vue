@@ -10,13 +10,13 @@
           <el-menu-item-group>
             <el-menu-item v-for="(subMenu, subMenuIndex) in menu.children" 
             :key="subMenu.key" 
-            :index="subMenuIndex+''" 
+            :index="menuIndex+''+subMenuIndex+''" 
             :value="subMenu.key" @click="goPage(subMenu.url)">
               {{getMenuName(subMenu.key)}}
             </el-menu-item>
           </el-menu-item-group>
         </el-sub-menu>
-        <el-menu-item v-else>
+        <el-menu-item v-else @click="goPage(menu.url)">
           {{getMenuName(menu.key)}}
         </el-menu-item>
         </template>
@@ -37,7 +37,7 @@ export default{
     }
   },
   created(){
-    console.log(locales);
+    // console.log(locales);
     menuConfig.map(item=>{
       this.menuItems.push(item);
     });
@@ -49,6 +49,7 @@ export default{
       return menuName;
     },
     goPage(url){
+      console.log(url)
       this.$router.push(url);
     }
   }
@@ -56,4 +57,7 @@ export default{
 </script>
 
 <style lang="scss" scoped>
+  .el-scrollbar{
+    height: 100%;
+  }
 </style>

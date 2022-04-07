@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <el-dropdown>
-            <el-icon style="margin-right: 8px; margin-top: 10px"><setting/></el-icon>
+            <el-icon style="margin-right: 0px; margin-top: 5px"><setting/></el-icon>
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item>View</el-dropdown-item>
