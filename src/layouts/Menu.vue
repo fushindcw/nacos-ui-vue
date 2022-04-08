@@ -72,6 +72,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$submenu-font-size: 15px;
 .menu {
   height: 100%;
   // border-right: solid 1px rgb(187, 179, 179);
@@ -80,7 +81,6 @@ export default {
 aside,
 ul,
 li {
-  $font-size: 18px;
   border-right: none;
   background-color: #ebedf1;
   li {
@@ -93,6 +93,9 @@ li {
     background-color: #f2f3f7;
   }
 }
+.el-sub-menu__title{
+  font-size: $submenu-font-size;
+}
 .menu-title {
   width: 100%;
   height: 50px;
@@ -102,7 +105,7 @@ li {
     width: 100%;
     height: 100%;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
   }
 }

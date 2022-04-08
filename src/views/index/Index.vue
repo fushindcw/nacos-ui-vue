@@ -28,7 +28,7 @@ export default {
 }
 .el-header {
   padding: 0;
-  background-color: rgb(61, 58, 58);
+  background-color: #252A30;
 }
 .el-aside {
   width: 180px;
