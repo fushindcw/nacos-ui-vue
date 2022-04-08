@@ -1,8 +1,8 @@
 <template>
   <div class="menu">
-    <el-row>
-      <el-col :span="1"><div class="grid-content bg-purple-dark" />1234</el-col>
-    </el-row>
+    <div class="menu-title">
+      <span>nacos 2.0.3</span>
+    </div>
     <el-scrollbar>
       <el-menu>
         <template
@@ -72,11 +72,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.menu{
+.menu {
   height: 100%;
-  border-right: solid 2px black;
+  // border-right: solid 1px rgb(187, 179, 179);
+  background-color: #ebedf1;
 }
-aside,ul{
+aside,
+ul,
+li {
+  $font-size: 18px;
   border-right: none;
+  background-color: #ebedf1;
+  li {
+    background-color: #ebedf1;
+    :hover {
+      background-color: #f2f3f7;
+    }
+  }
+  :hover {
+    background-color: #f2f3f7;
+  }
+}
+.menu-title {
+  width: 100%;
+  height: 50px;
+  background-color: #d9dee4;
+  span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
 }
 </style>
