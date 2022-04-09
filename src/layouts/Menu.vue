@@ -1,9 +1,9 @@
 <template>
   <div class="menu">
-    <div class="menu-title">
-      <span>nacos 2.0.3</span>
-    </div>
     <el-scrollbar>
+      <div class="title">
+        <span>NACOS 2.0.2</span>
+      </div>
       <el-menu>
         <template
           v-for="(menu, menuIndex) in menuItems"
@@ -16,7 +16,7 @@
             :key="menu.key"
             :index="menuIndex + ''"
           >
-            <template #title>
+            <template #title >
               {{ getMenuName(menu.key) }}
             </template>
             <el-menu-item-group>
@@ -72,11 +72,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$submenu-font-size: 15px;
+$submenu-font-size: 18px;
 .menu {
   height: 100%;
-  // border-right: solid 1px rgb(187, 179, 179);
   background-color: #ebedf1;
+  .title{
+    height: 50px;
+    span{
+      display: block;
+      text-align: center;
+      font-weight: bold;
+      padding-top: 20px;
+    }
+  }
 }
 aside,
 ul,
@@ -91,22 +99,6 @@ li {
   }
   :hover {
     background-color: #f2f3f7;
-  }
-}
-.el-sub-menu__title{
-  font-size: $submenu-font-size;
-}
-.menu-title {
-  width: 100%;
-  height: 50px;
-  background-color: #d9dee4;
-  span {
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
   }
 }
 </style>
