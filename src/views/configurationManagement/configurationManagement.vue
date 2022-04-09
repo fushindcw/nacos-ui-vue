@@ -12,8 +12,8 @@
   <div id="label">
     <label
       >配置管理 | {{ currentNamespace }}
-      {{ currentNamespaceId }} 查询结果：共查询到
-      {{ currentNamespaceConfigCount }} 条满足要求的配置。</label
+      <i style="color: rgb(204, 204, 204);">{{ currentNamespaceId }} 查询结果：共查询到
+      {{ currentNamespaceConfigCount }} 条满足要求的配置。</i></label
     >
   </div>
   <div id="search">
@@ -37,7 +37,7 @@
         <el-button type="primary" @click="onSubmit">导入配置</el-button>
       </el-form-item>
     </el-form>
-    <el-button type="primary" style="position: absolute; margin-left: 75%;">添加配置</el-button>
+    <el-button type="primary" style="position: absolute; margin-left: 75%;" @click="createConfiguration">添加配置</el-button>
   </div>
   <div id="tab">
     <el-table :data="tableData" @selection-change="selectionChange" border>
@@ -126,6 +126,9 @@ export default {
       val.map((item) => {
         this.dataIds.push(item.dataId);
       });
+    },
+    createConfiguration(){
+      this.$router.push("/createConfiguration")
     },
     /**
      * 当选项卡选中的时候

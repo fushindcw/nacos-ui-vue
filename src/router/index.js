@@ -12,6 +12,10 @@ const routes = [
         component: ()=> import('@/views/configurationManagement/configurationManagement.vue')
       },
       {
+        path: '/createConfiguration',
+        component: ()=> import('@/views/configurationManagement/createConfiguration/createConfiguration.vue')
+      },
+      {
         path: '/404.html',
         component: ()=>import('@/views/404/404.vue')
       }
