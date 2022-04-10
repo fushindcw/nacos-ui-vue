@@ -1,5 +1,6 @@
 <template>
     <div class="header">
+        <el-image id="title" src="img/logo-2000-390.svg"/>
         <el-dropdown>
             <el-icon style="margin-right: 0px; margin-top: 5px"><setting/></el-icon>
             <template #dropdown>
@@ -15,4 +16,9 @@
 </template>
 
 <style lang="scss" scoped>
+#title{
+  height: 60px;
+  width: 100px;
+  padding-left: 45px;
+}
 </style>

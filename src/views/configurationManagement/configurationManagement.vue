@@ -37,7 +37,7 @@
         <el-button type="primary" @click="onSubmit">导入配置</el-button>
       </el-form-item>
     </el-form>
-    <el-button type="primary" style="position: absolute; margin-left: 75%;" @click="createConfiguration">添加配置</el-button>
+    <el-button type="primary" @click="createConfiguration">添加配置</el-button>
   </div>
   <div id="tab">
     <el-table :data="tableData" @selection-change="selectionChange" border>
