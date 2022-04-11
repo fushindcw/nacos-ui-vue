@@ -4,14 +4,14 @@ import { ElMessage } from 'element-plus'
 import { h } from 'vue'
 
 const service = axios.create({
-    baseURL: 'http://127.0.0.1:8083/',
+    baseURL: 'http://127.0.0.1:8848/nacos',
     timeout: 3000
 })
 
 service.interceptors.request.use((config)=>{
-    let token = window.localStorage.getItem('token');
-    if(token != undefined){
-        config.headers['Authorization'] = token;
+    let userInfo = window.localStorage.getItem('userInfo');
+    if(userInfo != undefined){
+        config.headers['accessToken'] = userInfo.accessToken;
     }
     return config;
 }, error=>{
@@ -56,25 +56,31 @@ export const POST = (uri, json)=>{
 }
 
 /**
- * get请求
+ * 表单请求
  * @param {*} uri 
- * @param {*} query 
+ * @param {*} formData 
  * @returns 
  */
-export const GET = (uri, query)=>{
-    if(query != undefined){
-        uri += '?'
-        for(var key in query){
-            uri = uri + key + '=' + query[key] + '&';
-        }
-        if(uri.endsWith('&')){
-            uri = uri.substring(1, uri.length-1);
-        }
-    }
+export const FORM_POST = (uri, formData)=>{
+    return service({
+        method: 'POST',
+        url: uri,
+        params: formData
+    })
+}
+
+/**
+ * get请求
+ * @param {*} uri 
+ * @param {*} params 
+ * @returns 
+ */
+export const GET = (uri, params)=>{
     console.log(uri);
     return service({
         method: 'GET',
-        url: uri
+        url: uri,
+        params: params
     });
 }
 
