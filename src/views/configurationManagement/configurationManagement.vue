@@ -31,10 +31,10 @@
         <el-link style="color: rgb(51, 205, 229);">高级查询</el-link>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">导入查询结果</el-button>
+        <el-button type="primary" @click="test">导入查询结果</el-button>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">导入配置</el-button>
+        <el-button type="primary" @click="test1">导入配置</el-button>
       </el-form-item>
     </el-form>
     <el-button type="primary" @click="createConfiguration">添加配置</el-button>
@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import {POST,GET} from '@/utils/request.js'
 export default {
   data() {
     return {
@@ -137,6 +138,21 @@ export default {
       console.log(val);
       this.currentNamespace = val;
     },
+    test(){
+      let loginInfo = {
+        username: 'dingchengwen',
+        password: 'Dcwlld7054'
+      }
+      POST('v1/users/tokens', loginInfo).then(data=>{
+        let token = data.token;
+        window.localStorage.setItem('token', token);
+      })
+    },
+    test1(){
+      GET('/v1/drugs/7').then(data=>{
+        console.log(data);
+      })
+    }
   },
 };
 </script>
