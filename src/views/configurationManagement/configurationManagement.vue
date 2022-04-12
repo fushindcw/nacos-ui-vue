@@ -40,7 +40,7 @@
     <el-button type="primary" @click="createConfiguration">添加配置</el-button>
   </div>
   <div id="tab">
-    <el-table :data="tableData" @selection-change="selectionChange" border>
+    <el-table ref="singleTable" :data="tableData" @selection-change="selectionChange" row-key="dataId" border>
       <el-table-column
         type="selection"
         width="50"
@@ -88,32 +88,32 @@ export default {
       dataIds: [],
       tableData: [
         {
-          dataId: "1",
+          dataId: 1,
           group: "dev",
           belong: "1234",
         },
         {
-          dataId: "2",
+          dataId: 2,
           group: "dev",
           belong: "1234",
         },
         {
-          dataId: "3",
+          dataId: 3,
           group: "dev",
           belong: "1234",
         },
         {
-          dataId: "4",
+          dataId: 4,
           group: "dev",
           belong: "1234",
         },
         {
-          dataId: "5",
+          dataId: 5,
           group: "dev",
           belong: "1234",
         },
         {
-          dataId: "6",
+          dataId: 6,
           group: "dev",
           belong: "1234",
         },
