@@ -44,7 +44,6 @@
 import menuConfig from "@/layouts/menu.js";
 import locales from "@/locales/index.js";
 export default {
-  name: "menu",
   data() {
     return {
       menuItems: [],

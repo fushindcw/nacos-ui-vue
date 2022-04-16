@@ -13,6 +13,7 @@
     "core-js": "^3.21.1",
     "css-loader": "^6.7.1",
     "element-plus": "^2.1.8",
+    "js-cookie": "^3.0.1",
     "nprogress": "^0.2.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
@@ -46,7 +47,9 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "no-unused-vars": "off"
+    }
   },
   "browserslist": [
     "> 1%",

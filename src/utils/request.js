@@ -1,17 +1,17 @@
 import axios from 'axios'
-// import { endsWith } from 'core-js/core/string'
+import store from '@/store'
 import { ElMessage } from 'element-plus'
 import { h } from 'vue'
 
 const service = axios.create({
-    baseURL: 'http://127.0.0.1:8848/nacos',
+    baseURL: 'http://192.168.100.108:8848/nacos',
     timeout: 3000
 })
 
 service.interceptors.request.use((config)=>{
-    let userInfo = window.localStorage.getItem('userInfo');
-    if(userInfo != undefined){
-        config.headers['accessToken'] = userInfo.accessToken;
+    let token = store.getters.token;
+    if(token != undefined){
+        config.headers['accessToken'] = token;
     }
     return config;
 }, error=>{
@@ -21,6 +21,7 @@ service.interceptors.request.use((config)=>{
 service.interceptors.response.use(response=>{
     return Promise.resolve(response.data);
 }, error=>{
+    console.log(error);
     let res = error.response;
     console.log(res);
     if(res.status === 401){
@@ -76,7 +77,6 @@ export const FORM_POST = (uri, formData)=>{
  * @returns 
  */
 export const GET = (uri, params)=>{
-    console.log(uri);
     return service({
         method: 'GET',
         url: uri,

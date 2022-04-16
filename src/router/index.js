@@ -1,4 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import store from '@/store'
 import Login from '@/views/login/Login.vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -28,20 +29,30 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes
 })
 
 router.beforeEach((to, from, next) => {
-  NProgress.start();
+  NProgress.start()
+  const token = store.getters.token
   if (to.matched.length === 0) {  //如果未匹配到路由
     router.push('/404.html')
-  } else {
-    next();    //如果匹配到正确跳转
+  } else if(to.path === '/login'){
+    if(token===undefined){
+      next()
+    }else{
+      router.push('/')
+    }
+  }else{
+    if(token === undefined){
+      router.push('/login?redirect='+to.path)
+    }
+    next();   //如果匹配到正确跳转
   }
 });
 router.afterEach(()=>{
-  NProgress.done();
+  NProgress.done()
 })
 
 export default router

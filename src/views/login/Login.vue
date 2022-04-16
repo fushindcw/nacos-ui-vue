@@ -31,11 +31,12 @@ export default {
   },
   methods:{
       login(){
-        login(this.loginInfo).then(result=>{
-            if(result){
-                this.$router.push('/');
-            }
-        })
+        this.$store.dispatch('user/userLogin', this.loginInfo);
+        // login(this.loginInfo).then(result=>{
+        //     if(result){
+        //         this.$router.push('/');
+        //     }
+        // })
       }
   }
 };
