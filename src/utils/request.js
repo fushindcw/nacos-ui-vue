@@ -2,9 +2,10 @@ import axios from 'axios'
 import store from '@/store'
 import { ElMessage } from 'element-plus'
 import { h } from 'vue'
+import qs from 'qs'
 
 const service = axios.create({
-    baseURL: 'http://192.168.100.108:8848/nacos',
+    baseURL: process.env.NODE_ENV==='development' ? '' : 'http://192.168.100.108:8848/nacos',
     timeout: 3000
 })
 
@@ -63,10 +64,15 @@ export const POST = (uri, json)=>{
  * @returns 
  */
 export const FORM_POST = (uri, formData)=>{
+    console.log(process.env)
     return service({
         method: 'POST',
         url: uri,
-        params: formData
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        // params: formData
+        data: qs.stringify(formData)
     })
 }
 
